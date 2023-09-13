@@ -8,7 +8,7 @@
             <li><a><i class="fa fa-user"></i> User <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="main.php?module=guru"><i class="fa fa-graduation-cap"></i> Guru </a></li>
-                <li><a href="main.php?module=siswa"><i class="fa fa-users"></i> Siswa </a></li>
+                <li><a href="main.php?module=siswa"><i class="fa fa-users"></i> Santri </a></li>
                 <li><a href="main.php?module=ortu"><i class="fa fa-male"></i> Orang Tua </a></li>
               </ul>
             </li>
@@ -16,26 +16,28 @@
             </li>
             <li><a href="main.php?module=kelas"><i class="fa fa-navicon"></i> Kelas </a>
             </li>
-            <li><a><i class="fa fa-warning"></i> Pelanggaran <span class="fa fa-chevron-down"></span></a>
-              <ul class="nav child_menu">
-                <li><a href="main.php?module=pelanggaran">Pelanggaran</a></li>
-                <li><a href="#">Tindakan</a></li>
-              </ul>
+           
+            <li><a href="main.php?module=pelanggaran"><i class="fa fa-warning"></i> Pelanggaran</a>
             </li>
             <li><a href="main.php?module=prestasi"><i class="fa fa-star-o"></i> Prestasi</a>
+            </li> 
+            <li><a href="main.php?module=hafalan"><i class="fa fa-book"></i> Hafalan</a>
             </li>  
           </ul>
       </li>
       
 
-      <li><a href="main.php?module=input_prestasi_siswa"><i class="fa fa-bar-chart"></i> Input Prestasi Siswa </a>
+      <li><a href="main.php?module=input_prestasi_siswa"><i class="fa fa-bar-chart"></i> Input Prestasi Santri </a>
       </li>
-      <li><a href="main.php?module=input_pelanggaran_siswa"><i class="fa fa-bar-chart"></i> Input Pelanggaran Siswa </a>
+      <li><a href="main.php?module=input_pelanggaran_siswa"><i class="fa fa-bar-chart"></i> Input Pelanggaran Santri </a>
+      </li>
+      <li><a href="main.php?module=input_hafalan_siswa"><i class="fa fa-bar-chart"></i> Input Hafalan Santri </a>
       </li>
       <li><a><i class="fa fa-newspaper-o"></i> Laporan <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="main.php?module=laporan_pelanggaran">Laporan Pelanggaran</a></li>
           <li><a href="main.php?module=laporan_prestasi">Laporan Prestasi</a></li>
+          <li><a href="main.php?module=laporan_hafalan">Laporan Hafalan</a></li>
         </ul>
       </li>
       <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>

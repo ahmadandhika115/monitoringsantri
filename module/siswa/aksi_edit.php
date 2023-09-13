@@ -32,10 +32,10 @@ if (empty($_SESSION['namauser']) AND empty($_SESSION['passuser'])) {
 	$queryEdit = mysqli_query($connect,"UPDATE siswa SET nama_siswa ='$namaSiswa', id_kelas='$idKelas', alamat='$alamat', th_angkatan='$thAngkatan', id_ortu='$idOrtu' WHERE nis='$nis'" );
 
 	if ($queryEdit) {
-		echo "<script> alert ('Data Siswa Berhasil Diubah'); window.location = '$base_url'+'main.php?module=siswa';</script>";
+		echo "<script> alert ('Data Santri Berhasil Diubah'); window.location = '$base_url'+'main.php?module=siswa';</script>";
 	}
 	else {
-		echo "<script> alert('Data Siswa Gagal Diubah'); window.location='$base_url'+'main.php?module=edit_siswa&nis='+'$nis';</script>";
+		echo "<script> alert('Data Santri Gagal Diubah'); window.location='$base_url'+'main.php?module=edit_siswa&nis='+'$nis';</script>";
 	}
 }
 ?>

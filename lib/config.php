@@ -1,3 +1,3 @@
 <?php
-$base_url="http://localhost/pembinaan_karakter/";
+$base_url="http://localhost/as-shofa/";
 ?>

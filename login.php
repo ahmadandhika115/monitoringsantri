@@ -23,9 +23,9 @@ else {
     if ($ketemu > 0) {
         session_start();
 
-        $_SESSION[namauser] = $r[username];
-        $_SESSION[passuser] = $r[password];
-        $_SESSION[akses] = $r[hak_akses];
+        $_SESSION['namauser'] = $r['username'];
+        $_SESSION['passuser'] = $r['password'];
+        $_SESSION['akses'] = $r['hak_akses'];
                
         header('location:main.php?module=home');
         

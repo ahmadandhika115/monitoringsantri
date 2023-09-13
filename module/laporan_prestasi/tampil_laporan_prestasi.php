@@ -12,7 +12,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Prestasi Siswa</h3>
+                <h3>Prestasi Santri</h3>
               </div>
             </div>
             
@@ -60,7 +60,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Laporan Prestasi Siswa </h2>
+                    <h2>Laporan Prestasi Santri </h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -74,9 +74,6 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                           <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Berdasarkan Kelas</a>
                           </li>
                           <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Berdasarkan Jurusan</a>
-                          </li>
-                          <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Berdasarkan Kategori</a>
-                          </li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                           <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
@@ -87,7 +84,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                                   <th>No</th>
                                   <th>Tanggal</th>
                                   <th>NIS</th>
-                                  <th>Nama Siswa</th>
+                                  <th>Nama Santri</th>
                                   <th>Prestasi</th>
                                 </tr>
                               </thead>

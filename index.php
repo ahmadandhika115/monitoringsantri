@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Login - Sistem Pembinaan Karakter</title>
+    <title>Login - Sistem Monitoring Kegiatan Santri</title>
     <script language="JavaScript">
-      var txt=":: Login - Sistem Pembinaan Karakter ";
+      var txt=":: Login - Sistem Monitoring Santri ";
       var kecepatan=250;var segarkan=null;function bergerak() { document.title=txt;
       txt=txt.substring(1,txt.length)+txt.charAt(0);
       segarkan=setTimeout("bergerak()",kecepatan);}bergerak();
@@ -32,7 +32,7 @@
     <div>
       <div class="login_wrapper">
       	    <div>
-                <h3>&nbsp; Selamat Datang di SIPAKAR</h3>      
+                <h3>&nbsp; SI Monitoring Kegiatan Santri</h3>      
             </div>	
         <div class="animate form login_form">
           <section class="login_content">

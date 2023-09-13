@@ -14,16 +14,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                 <h3> Edit Data Orang Tua<small></small></h3>
               </div>
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+             
             </div>
 
             <div class="clearfix"></div>

@@ -21,16 +21,18 @@ elseif ($_SESSION['akses']==5){ ?>
 
                 $prestasi=mysqli_query($connect, "SELECT SUM(prestasi.poin) AS totPrestasi FROM prestasi JOIN detail_poin ON prestasi.id_prestasi=detail_poin.id_prestasi WHERE detail_poin.nis='$nis' ORDER BY detail_poin.nis");
 				$pres=mysqli_fetch_array($prestasi);
-                $poinPrestasi=$pres['totPrestasi'];                
+                $poinPrestasi=$pres['totPrestasi'];  
+                
+                $hafalan=mysqli_query($connect, "SELECT SUM(hafalan.poin) AS totHafalan FROM hafalan JOIN detail_poin ON hafalan.id_hafalan=detail_poin.id_hafalan WHERE detail_poin.nis='$nis' ORDER BY detail_poin.nis");
+				$hafal=mysqli_fetch_array($hafalan);
+                $poinHafalan=$hafal['totHafalan'];
                
             ?>      
 <div class="right_col" role="main">
 	<div class="">
         <div class="row top_tiles">
-        	<div class="animated flipInY col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                
-            </div>
-            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+       
+            <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-warning"></i></div>
                   <div class="count"><?php if($poinPelanggaran==0){echo "0";} else{ echo $poinPelanggaran; }?></div>
@@ -38,10 +40,8 @@ elseif ($_SESSION['akses']==5){ ?>
                   <p>Total poin pelanggaran yang dilakukan</p>
                 </div>
             </div>
-            <div class="animated flipInY col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                
-            </div>
-            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+           
+            <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-star-o"></i></div>
                   <div class="count"><?php if($poinPrestasi==0){echo "0";} else{ echo $poinPrestasi; }?></div>
@@ -49,7 +49,68 @@ elseif ($_SESSION['akses']==5){ ?>
                   <p>Total poin prestasi yang didapat</p>
                 </div>
             </div>
+           
+            <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-book"></i></div>
+                  <div class="count"><?php if($poinHafalan==0){echo "0";} else{ echo $poinHafalan; }?></div>
+                  <h3>Poin Hafalan </h3>
+                  <p>Total poin hafalan yang didapat</p>
+                </div>
+            </div>
         </div>
+
+    
+        <?php
+        // Mendapatkan total poin pelanggaran dari database atau perhitungan lainnya
+        $pelanggaran = mysqli_query($connect, "SELECT SUM(pelanggaran.poin) AS jml FROM pelanggaran JOIN detail_poin ON pelanggaran.id_pelanggaran=detail_poin.id_pelanggaran WHERE detail_poin.nis='$nis' ORDER BY detail_poin.nis");
+        $plg = mysqli_fetch_array($pelanggaran);
+        $poinPelanggaran = $plg['jml'];
+
+        // Menyiapkan notifikasi berdasarkan kondisi poin pelanggaran
+        $notifMessage = "";
+        if ($poinPelanggaran >= 100) {
+            $notifMessage = '<div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>PERHATIAN! Poin Pelanggaran Telah Mencapai 100 atau lebih.</strong> Orang tua/Wali santri diharapkan Datang ke Pondok Pesantren Secepatnya.
+                            </div>';
+        }
+        echo $notifMessage;
+        ?>
+
+        <?php
+        // Mendapatkan total poin prestasi dari database atau perhitungan lainnya
+        $prestasi = mysqli_query($connect, "SELECT SUM(prestasi.poin) AS totPrestasi FROM prestasi JOIN detail_poin ON prestasi.id_prestasi=detail_poin.id_prestasi WHERE detail_poin.nis='$nis' ORDER BY detail_poin.nis");
+        $pres = mysqli_fetch_array($prestasi);
+        $poinPrestasi = $pres['totPrestasi'];
+
+        // Menyiapkan notifikasi berdasarkan kondisi poin prestasi
+        $notifPrestasi = "";
+        if ($poinPrestasi >= 50) {
+            $notifPrestasi = '<div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>SELAMAT! Poin Prestasi Telah Mencapai 50 atau lebih.</strong> Santri berprestasi akan mendapatkan penghargaan khusus.
+                            </div>';
+        }
+        echo $notifPrestasi; 
+        ?>
+
+        <?php
+        // Mendapatkan total poin hafalan dari database atau perhitungan lainnya
+        $hafalan = mysqli_query($connect, "SELECT SUM(hafalan.poin) AS totHafalan FROM hafalan JOIN detail_poin ON hafalan.id_hafalan=detail_poin.id_hafalan WHERE detail_poin.nis='$nis' ORDER BY detail_poin.nis");
+        $hafal = mysqli_fetch_array($hafalan);
+        $poinHafalan = $hafal['totHafalan'];
+
+        // Menyiapkan notifikasi berdasarkan kondisi poin hafalan
+        $notifHafalan = "";
+        if ($poinHafalan >= 50) {
+            $notifHafalan = '<div class="alert alert-info alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>SELAMAT! Poin Hafalan Telah Mencapai 50 atau lebih.</strong> Santri yang berhasil mencapai poin hafalan tertentu akan mendapatkan penghargaan.
+                            </div>';
+        }
+        echo $notifHafalan;
+        ?>
     </div><!-- Penutup class "" -->
 	
     <div class="row">
@@ -100,17 +161,22 @@ elseif ($_SESSION['akses']==5){ ?>
             </div>
         </div>
     </div>
-    <h4 align="center">Anda dapat melakukan pengecekan detail poin pelanggaran dan prestasi dengan klik menu di samping atau klik tombol di bawah ini</h4>
+    <h4 align="center">Anda dapat melakukan pengecekan detail poin dengan cara klik menu di samping atau klik tombol di bawah ini</h4>
     <br>
-    <div class="col-md-3"></div>
-    <div class="col-md-4">
+    <div class="col-md-2"></div>
+    <div class="col-md-3">
     	<a href="main.php?module=lap_pelanggaran_ke_siswa">
     		<button type="button" class="btn btn-primary btn-lg">Cek Poin Pelanggaran</button>
     	</a>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
     	<a href="main.php?module=lap_prestasi_ke_siswa">
     		<button type="button" class="btn btn-primary btn-lg">Cek Poin Prestasi</button>
+    	</a>
+    </div>
+    <div class="col-md-3">
+    	<a href="main.php?module=lap_hafalan_ke_siswa">
+    		<button type="button" class="btn btn-primary btn-lg">Cek Poin Hafalan</button>
     	</a>
     </div>
 

@@ -22,10 +22,10 @@
     $querySimpan = mysqli_query($connect,"INSERT INTO detail_poin (tanggal, tahun_ajaran, nis, id_pelanggaran, ket) VALUES ('$tanggal', '$thAjaran', '$nis', '$idPelanggaran', '$ket')");
 
     if ($querySimpan) {
-        echo "<script> alert('Data Pelanggaran Siswa Berhasil Masuk'); window.location = '$base_url'+'main.php?module=input_pelanggaran_siswa';</script>";
+        echo "<script> alert('Data Pelanggaran Santri Berhasil Masuk'); window.location = '$base_url'+'main.php?module=input_pelanggaran_siswa';</script>";
     }
     else {
-        echo "<script> alert('Data Pelanggaran Siswa Gagal Dimasukkan'); window.location = '$base_url'+'main.php?module=tambah_pelanggaran_siswa';</script>";
+        echo "<script> alert('Data Pelanggaran Santri Gagal Dimasukkan'); window.location = '$base_url'+'main.php?module=tambah_pelanggaran_siswa';</script>";
 
     }
 

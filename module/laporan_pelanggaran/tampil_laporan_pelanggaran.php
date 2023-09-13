@@ -12,7 +12,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Pelanggaran Siswa</h3>
+                <h3>Pelanggaran Santri</h3>
               </div>
             </div>
             
@@ -61,7 +61,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Laporan Pelanggaran Siswa </h2>
+                    <h2>Laporan Pelanggaran Santri </h2>
                     
                     <div class="clearfix"></div>
                   </div>
@@ -79,9 +79,6 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                           <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Berdasarkan Kelas</a>
                           </li>
                           <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Berdasarkan Jurusan</a>
-                          </li>
-                          <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Berdasarkan Kategori</a>
-                          </li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                           <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
@@ -92,7 +89,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                                   <th>No</th>
                                   <th>Tanggal</th>
                                   <th>NIS</th>
-                                  <th>Nama Siswa</th>
+                                  <th>Nama Santri</th>
                                   <th>Pelanggaran</th>
                                 </tr>
                               </thead>
@@ -209,78 +206,6 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                               </tbody>
                             </table>
                             <!-- end pelanggaran per jurusan -->
-
-                          </div>
-
-                          <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
-                           <!-- start pelanggaran per kategori -->
-                            <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                              
-                                <?php
-                                  $tahun_ajaran=mysqli_query($connect, "SELECT * FROM th_ajaran");
-                                  $ta=mysqli_fetch_array($tahun_ajaran);
-                                  $thAjaran=$ta['tahun_ajaran'];
-
-                                  $kategori=mysqli_query($connect, "SELECT kat_pelanggaran.nama_kategori, sub_kat_pelanggaran.nama_sub_kategori, sub_kat_pelanggaran.id_sub_kategori FROM kat_pelanggaran JOIN sub_kat_pelanggaran ON kat_pelanggaran.id_kat_pelanggaran=sub_kat_pelanggaran.id_kat_pelanggaran ORDER BY kat_pelanggaran.id_kat_pelanggaran");
-                                    $id=1;
-                                    while($kat=mysqli_fetch_array($kategori)){
-                                      $idKatPelanggaran=$kat['id_sub_kategori'];
-
-                                      $poin_kat=mysqli_query($connect, "SELECT kat_pelanggaran.nama_kategori, sub_kat_pelanggaran.nama_sub_kategori, sub_kat_pelanggaran.id_sub_kategori, COUNT(pelanggaran.poin) AS jml FROM kat_pelanggaran JOIN sub_kat_pelanggaran ON kat_pelanggaran.id_kat_pelanggaran=sub_kat_pelanggaran.id_kat_pelanggaran JOIN pelanggaran ON sub_kat_pelanggaran.id_sub_kategori=pelanggaran.id_sub_kategori JOIN detail_poin ON pelanggaran.id_pelanggaran=detail_poin.id_pelanggaran WHERE sub_kat_pelanggaran.id_sub_kategori='$idKatPelanggaran' AND detail_poin.tahun_ajaran='$thAjaran'");
-                                      $pkat=mysqli_fetch_array($poin_kat);
-                                      $jmlPoinKat=$pkat['jml'];
-                                      $idSubKat=$pkat['id_sub_kategori'];
-                                 ?>
-                              <div class="panel">
-                                <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#<?php echo $id; ?>" aria-expanded="false" aria-controls="collapseTwo">
-                                  <h4 class="panel-title"><?php echo $kat['nama_kategori']." - ".$kat['nama_sub_kategori']." [ ".$jmlPoinKat." Pelanggaran ] "; ?><span  class="fa fa-chevron-down pull-right"></span></h4>
-                                </a>
-                                <div id="<?php echo $id; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                  <div class="panel-body">
-                                    
-                                    <table class="table table-bordered">
-                                      <thead>
-                                        <tr>
-                                          <th>#</th>
-                                          <th>Jenis Pelanggaran</th>
-                                          <th>Jumlah Pelanggaran </th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <?php
-                                          $pelanggaran=mysqli_query($connect, "SELECT * FROM pelanggaran WHERE id_sub_kategori=$idSubKat");
-                                
-                                          while($plg=mysqli_fetch_array($pelanggaran)){
-                                          $idPelanggaran=$plg['id_pelanggaran'];
-
-                                          $poin_pelanggar=mysqli_query($connect, "SELECT pelanggaran.id_pelanggaran, COUNT(pelanggaran.poin) AS banyakPelanggar FROM pelanggaran JOIN detail_poin ON pelanggaran.id_pelanggaran=detail_poin.id_pelanggaran WHERE pelanggaran.id_pelanggaran=$idPelanggaran AND detail_poin.tahun_ajaran='$thAjaran'");
-                                          $ppel=mysqli_fetch_array($poin_pelanggar);
-                                          $jmlPelanggar=$ppel['banyakPelanggar'];
-                                         ?>
-
-                                        <tr>
-                                          <th scope="row">#</th>
-                                          <td><?php echo $plg['nama_pelanggaran']; ?></td>
-                                          <td><?php echo $jmlPelanggar; ?></td>
-                                        </tr>
-                                        <?php
-                                          }
-                                         ?>
-                                        
-                                      </tbody>
-                                    </table>
-
-                                  </div>
-                                </div>
-                              </div>
-                                  <?php
-                                  $id++;
-                                    }
-                                  ?>
-
-                            </div>
-                            <!-- end pelanggaran per kategori -->
-
 
                           </div>
 

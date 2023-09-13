@@ -16,10 +16,10 @@
             $queryHapus=mysqli_query($connect,"DELETE FROM siswa WHERE nis='$nis'");    
 
     if ($queryKeluar AND $queryHapus) {
-        echo "<script> alert('Siswa Telah Dikeluarkan'); window.location = '$base_url'+'main.php?module=siswa_keluar';</script>";
+        echo "<script> alert('Santri Telah Dikeluarkan'); window.location = '$base_url'+'main.php?module=siswa_keluar';</script>";
     }
     else {     
-        echo "<script> alert('Siswa Gagal Dikeluarkan'); window.location = '$base_url'+'main.php?module=siswa_keluar'; </script>";
+        echo "<script> alert('Santri Gagal Dikeluarkan'); window.location = '$base_url'+'main.php?module=siswa_keluar'; </script>";
     }
 
 ?>

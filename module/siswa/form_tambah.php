@@ -11,7 +11,7 @@ elseif ($_SESSION['akses']==1){ ?>
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3> Tambah Data Siswa<small></small></h3>
+                <h3> Tambah Data Santri<small></small></h3>
               </div>
 
               <div class="title_right">
@@ -26,7 +26,7 @@ elseif ($_SESSION['akses']==1){ ?>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Tambah Siswa</h2>
+                    <h2>Form Tambah Santri</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -40,7 +40,7 @@ elseif ($_SESSION['akses']==1){ ?>
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama Siswa</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama Santri</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input name="namaSiswa" id="namaSiswa" class="form-control col-md-7 col-xs-12" required="required" type="text">
                         </div>

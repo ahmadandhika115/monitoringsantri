@@ -30,7 +30,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 ){ ?>     <!-- Cek user, 
               <div class="col-md-8 col-sm-8 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Masukkan NIS Siswa Yang Akan Dikeluarkan</h2>
+                    <h2>Masukkan NIS Santri Yang Akan Dikeluarkan</h2>
                     <div class="clearfix"></div>
                   </div>
 
@@ -67,7 +67,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 ){ ?>     <!-- Cek user, 
                         <h3 class="panel-title">Catatan !</h3>
                       </div>
                       <div class="panel-body">
-                        Siswa yang namanya telah dimasukkan kedalam daftar siswa yang keluar, sudah tidak dapat dikembalikan datanya ke dalam data siswa.<br>
+                        Santri yang namanya telah dimasukkan kedalam daftar santri yang keluar, sudah tidak dapat dikembalikan datanya ke dalam data santri.<br>
                         <b>Sebelum memasukkan nama atau NIS mohon pastikan terlebih dahulu !</b>
                       </div>
                     </div>
@@ -80,7 +80,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 ){ ?>     <!-- Cek user, 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Siswa Yang Keluar / Pindah</h2>
+                    <h2>Data Santri Yang Keluar / Pindah</h2>
                     <div class="clearfix"></div>
                   </div>
 

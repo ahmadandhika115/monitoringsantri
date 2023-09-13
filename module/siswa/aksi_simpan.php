@@ -23,16 +23,16 @@
     }
     
     if (is_numeric($namaSiswa)) {
-        echo "<script> alert('Nama Siswa Hanya Boleh Huruf dan Spasi'); window.location = '$base_url'+'main.php?module=tambah_siswa';</script>";
+        echo "<script> alert('Nama Santri Hanya Boleh Huruf dan Spasi'); window.location = '$base_url'+'main.php?module=tambah_siswa';</script>";
     }else{
     
         $querySimpan = mysqli_query($connect,"INSERT INTO siswa VALUES ('$nis', '$namaSiswa', '$thAngkatan', '$alamat', '$idKelas', '$idOrtu')");
 
         if ($querySimpan) {
-            echo "<script> alert('Data siswa Berhasil Masuk'); window.location = '$base_url'+'main.php?module=siswa';</script>";
+            echo "<script> alert('Data santri Berhasil Masuk'); window.location = '$base_url'+'main.php?module=siswa';</script>";
         }
         else {
-            echo "<script> alert('Data siswa Gagal Dimasukkan'); window.location = '$base_url'+'main.php?module=tambah_siswa';</script>";
+            echo "<script> alert('Data santri Gagal Dimasukkan'); window.location = '$base_url'+'main.php?module=tambah_siswa';</script>";
 
         }
     }

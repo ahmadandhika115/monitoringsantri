@@ -11,7 +11,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3> Input Data Prestasi Siswa<small></small></h3>
+                <h3> Input Data Prestasi Santri<small></small></h3>
               </div>
 
               <div class="title_right">
@@ -117,14 +117,14 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <h4>Data Prestasi Siswa</h4>
+                    <h4>Data Prestasi Santri</h4>
                     <table id="datatable-fixed-header" class="table table-striped table-bordered">
                       <thead>
                         <tr>
                           <th>No</th>
                           <th>Tanggal</th>
                           <th>NIS</th>
-                          <th>Nama Siswa</th>
+                          <th>Nama Santri</th>
                           <th>Prestasi</th>
                           <th>Aksi</th>
                         </tr>
@@ -147,7 +147,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                           <td>
                             <div class="btn-group">
                               <a href="main.php?module=edit_prestasi_siswa&id_detail_poin=<?php echo $idDetailPoin; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i></button></a>
-                              <a href="module/prestasi_siswa/aksi_hapus.php?id_detail_poin=<?php echo $idDetailPoin;?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button></a>              
+                              <a href="module/prestasi_siswa/aksi_hapus.php?id_detail_poin=<?php echo $idDetailPoin;?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-left: 0.1cm;"><i class='fa fa-trash'></i></button></a>              
                             </div>
                           </td>
                         </tr>

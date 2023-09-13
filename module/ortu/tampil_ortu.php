@@ -35,9 +35,6 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                         <li>
                           <abbr title="Single input"><a href="main.php?module=tambah_ortu"><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i> Tambah Data Orang Tua</button></a></abbr>
                         </li>
-                        <li>
-                          <abbr title="Upload Data Siswa Dalam .csv"><a href="main.php?module=tambah_ortu"><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-upload"></i> Upload File Orang Tua</button></a></abbr>
-                        </li>
                         <?php } ?>
                       </ul>
                     <div class="clearfix"></div>
@@ -81,8 +78,8 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                             <td class=" last">
                               <div class="btn-group">
                                 <a href="main.php?module=edit_ortu&id_ortu=<?php echo $ortu['id_ortu']; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i> Edit</button></a>
-                                <!--
-                                <a href="module/ortu/aksi_hapus.php?id_ortu=<?php //echo $ortu['id_ortu'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button></a>-->
+                              
+                                <a href="module/ortu/aksi_hapus.php?id_ortu=<?php echo $ortu['id_ortu'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-left: 0.1cm;"><i class='fa fa-trash'></i></button> Hapus</a>
                               </div>
                             </td>
                             <?php } ?>

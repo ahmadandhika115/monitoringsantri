@@ -14,16 +14,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
                 <h3>Master Data Prestasi<small></small></h3>
               </div>
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+             
             </div>
 
             <div class="clearfix"></div>
@@ -79,6 +70,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
                             <td class=" last">
                               <div class="btn-group">
                                 <a href="main.php?module=edit_prestasi&id_prestasi=<?php echo $pres['id_prestasi']; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i> Edit</button></a>
+                                <a href="module/prestasi/aksi_hapus.php?id_prestasi=<?php echo $pres['id_prestasi'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-left: 0.1cm;"><i class='fa fa-trash'></i></button> Hapus</a>
                               </div>
                             </td>
                             <?php 
@@ -93,6 +85,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
                           <tr class="odd pointer">
                             
                             <td class=" "><?php echo $no;?></td>
+                           
                             <td class=" "><?php echo $pres['nama_prestasi'];?></td>
                             <td class=" "><?php echo $pres['poin'];?></td>
                             <?php 
@@ -101,6 +94,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
                             <td class=" last">
                               <div class="btn-group">
                                 <a href="main.php?module=edit_prestasi&id_prestasi=<?php echo $pres['id_prestasi']; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i> Edit</button></a>
+                                <a href="module/prestasi/aksi_hapus.php?id_prestasi=<?php echo $pres['id_prestasi'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-left: 0.1cm;"><i class='fa fa-trash'></i></button> Hapus</a>
                               </div>
                             </td>
                             <?php 

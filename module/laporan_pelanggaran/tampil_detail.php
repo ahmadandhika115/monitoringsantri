@@ -17,7 +17,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
 
 
               <?php 
-              $tahun_ajaran=mysqli_query($connect, "SELECT * FROM th_ajaran");
+              $tahun_ajaran=mysqli_query($connect, "SELECT * FROM th_ajaran WHERE sekarang='Y'");
               $ta=mysqli_fetch_array($tahun_ajaran);
               $thAjaran=$ta['tahun_ajaran'];
 
@@ -30,18 +30,9 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Laporan Pelanggaran Siswa</h2>
+                    <h2>Laporan Pelanggaran Santri</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
                       </li>
                       <li><a class="close-link"><i class="fa fa-close"></i></a>
                       </li>
@@ -49,9 +40,9 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <h4 align="center">Laporan Pelanggaran Siswa</h4>
+                    <h4 align="center">Laporan Pelanggaran Santri</h4>
                     <h4 align="center">Kelas <?php echo $kls['tingkat_kelas']." ".$kls['nama_jurusan']." ".$kls['sub_kelas'] ?></h4>
-                    <h4 align="center">SMK Negeri 2 Depok Sleman Yogyakarta</h4>
+                    <h4 align="center">Pondok Pesantren Technopreneur As-Shofa</h4>
                     <h4 align="center">Tahun Ajaran <?php echo $thAjaran; ?></h4>
                     <!--<p class="text-muted font-13 m-b-30">
                       The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
@@ -61,7 +52,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                         <tr>
                           <th>No</th>
                           <th>NIS</th>
-                          <th>Nama Siswa</th>
+                          <th>Nama Santri</th>
                           <th>Total Poin Pelanggaran</th>
                         </tr>
                       </thead>

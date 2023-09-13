@@ -14,16 +14,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                 <h3> Edit Data User<small></small></h3>
               </div>
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+             
             </div>
 
             <div class="clearfix"></div>
@@ -133,10 +124,10 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                           <select name="hakAkses" class="form-control" required="required">
                             <option disabled="disabled">-- Hak Akses --</option>
                             <option <?php if( $hakAkses=='1'){echo "selected"; } ?> value="1">1 - Administrator</option>
-                            <option <?php if( $hakAkses=='2'){echo "selected"; } ?> value="2">2 - Kesiswaan</option>
+                            <option <?php if( $hakAkses=='2'){echo "selected"; } ?> value="2">2 - Kasi</option>
                             <option <?php if( $hakAkses=='3'){echo "selected"; } ?> value="3">3 - Wali Kelas</option>
-                            <option <?php if( $hakAkses=='4'){echo "selected"; } ?> value="4">4 - Kepala Sekolah</option>
-                            <option <?php if( $hakAkses=='5'){echo "selected"; } ?> value="5">5 - Siswa / Orang Tua</option>
+                            <option <?php if( $hakAkses=='4'){echo "selected"; } ?> value="4">4 - Direktur</option>
+                            <option <?php if( $hakAkses=='5'){echo "selected"; } ?> value="5">5 - Orang tua/Santri</option>
                           </select>
                         </div>
                       </div>

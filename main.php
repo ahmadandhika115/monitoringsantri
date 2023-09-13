@@ -16,13 +16,14 @@ else{ ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Pembinaan Karakter Siswa</title>
-    <script language="JavaScript">
-      var txt=":: Pembinaan Karakter Siswa ";
+    <title>PP Technopreneur As-Shofa</title>
+    <!--<script language="JavaScript">
+      var txt=" :: Sistem Monitoring Kegiatan Santri - PP Technopreneur As-Shofa ";
       var kecepatan=250;var segarkan=null;function bergerak() { document.title=txt;
       txt=txt.substring(1,txt.length)+txt.charAt(0);
       segarkan=setTimeout("bergerak()",kecepatan);}bergerak();
     </script>
+    -->
 
     <script type="text/javascript">
       function validasi_input(form){
@@ -160,7 +161,7 @@ else{ ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
+                    
                     <!--<li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
@@ -172,13 +173,6 @@ else{ ?>
                   </ul>
                 </li>
 
-                <li role="presentation" class="dropdown">
-                  <a href="main.php?module=help" class="dropdown-toggle info-number">
-                    <!--<i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>-->
-                    Bantuan
-                  </a>
-                </li>
                 
               </ul>
             </nav>
@@ -247,11 +241,6 @@ else{ ?>
         }elseif ($_GET['module'] == 'edit_user') {
                 include "module/user/form_edit.php";
         }
-        elseif ($_GET['module'] == 'alumni') {
-                include "module/alumni/tampil_alumni.php";
-        }elseif ($_GET['module'] == 'detail_alumni') {
-                include "module/alumni/detail_alumni.php";
-        }
         elseif ($_GET['module'] == 'siswa_keluar') {
                 include "module/siswa_keluar/tampil_siswa_keluar.php";
         }
@@ -274,13 +263,7 @@ else{ ?>
         }elseif ($_GET['module'] == 'edit_pelanggaran') {
                 include "module/pelanggaran/form_edit.php";
         }
-         elseif ($_GET['module'] == 'tindakan') {
-                include "module/tindakan/tampil_tindakan.php";
-        }elseif ($_GET['module'] == 'tambah_tindakan') {
-                include "module/tindakan/form_tambah.php";
-        }elseif ($_GET['module'] == 'edit_tindakan') {
-                include "module/tindakan/form_edit.php";
-        }
+        
          elseif ($_GET['module'] == 'prestasi') {
                 include "module/prestasi/tampil_prestasi.php";
         }elseif ($_GET['module'] == 'tambah_prestasi') {
@@ -288,6 +271,16 @@ else{ ?>
         }elseif ($_GET['module'] == 'edit_prestasi') {
                 include "module/prestasi/form_edit.php";
         }
+
+         
+         elseif ($_GET['module'] == 'hafalan') {
+                include "module/hafalan/tampil_hafalan.php";
+        }elseif ($_GET['module'] == 'tambah_hafalan') {
+                include "module/hafalan/form_tambah.php";
+        }elseif ($_GET['module'] == 'edit_hafalan') {
+                include "module/hafalan/form_edit.php";
+        }
+
          elseif ($_GET['module'] == 'input_pelanggaran_siswa') {
                 include "module/pelanggaran_siswa/form_tambah.php";
         }elseif ($_GET['module'] == 'edit_pelanggaran_siswa') {
@@ -297,6 +290,12 @@ else{ ?>
                 include "module/prestasi_siswa/form_tambah.php";
         }elseif ($_GET['module'] == 'edit_prestasi_siswa') {
                 include "module/prestasi_siswa/form_edit.php";
+        }
+
+        elseif ($_GET['module'] == 'input_hafalan_siswa') {
+          include "module/hafalan_siswa/form_tambah.php";
+        }elseif ($_GET['module'] == 'edit_hafalan_siswa') {
+                include "module/hafalan_siswa/form_edit.php";
         }
          elseif ($_GET['module'] == 'laporan_pelanggaran') {
                 include "module/laporan_pelanggaran/tampil_laporan_pelanggaran.php";
@@ -311,6 +310,14 @@ else{ ?>
                 include "module/laporan_prestasi/tampil_detail.php";
         }elseif ($_GET['module'] == 'lap_prestasi_ke_siswa') {
                 include "module/laporan_prestasi/laporan_ke_siswa.php";
+        }
+
+        elseif ($_GET['module'] == 'laporan_hafalan') {
+          include "module/laporan_hafalan/tampil_laporan_hafalan.php";
+        }elseif ($_GET['module'] == 'detail_hafalan_siswa') {
+                include "module/laporan_hafalan/tampil_detail.php";
+        }elseif ($_GET['module'] == 'lap_hafalan_ke_siswa') {
+                include "module/laporan_hafalan/laporan_ke_siswa.php";
         }
 
         elseif ($_GET['module'] == 'pre_cetak1') {
@@ -346,7 +353,7 @@ else{ ?>
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Sistem Pembinaan Karakter Siswa - SMK N 2 Depok Sleman &copy;2017
+            Sistem Monitoring Kegiatan Santri - PP Technopreneur As-Shofa &copy;2023
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -1019,6 +1026,37 @@ else{ ?>
     </script>
     <!-- Autocomplete Prestasi -->
 
+    <!-- Autocomplete Hafalan -->
+    <script>
+      $(document).ready(function() {
+        <?php
+        include "lib/koneksi.php";
+        //get matched data from skills table
+        $query = $connect->query("SELECT id_hafalan, nama_hafalan FROM hafalan");
+        ?>
+
+        var hafalan ={
+          <?php while($row=mysqli_fetch_array($query)){
+            echo "$row[id_hafalan]".":\""."$row[id_hafalan]"." - "."$row[nama_hafalan]"."\",";
+          } ?>
+        };
+
+        var hafalanArray = $.map(hafalan, function(value, key) {
+          return {
+            value: value,
+            data: key
+          };
+        });
+
+        // initialize autocomplete with custom appendTo
+        $('#autocomplete-hafalan').autocomplete({
+          lookup: hafalanArray,
+          appendTo: '#autocomplete-container'
+        });
+      });
+    </script>
+    <!-- Autocomplete Hafalan -->
+
 
     <!-- Starrr -->
     <script>
@@ -1080,20 +1118,9 @@ else{ ?>
             $("#datatable-buttons").DataTable({
               dom: "Bfrtip",
               buttons: [
-                {
-                  extend: "copy",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "csv",
-                  className: "btn-sm"
-                },
+                
                 {
                   extend: "excel",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "pdfHtml5",
                   className: "btn-sm"
                 },
                 {
@@ -1266,6 +1293,49 @@ else{ ?>
           resize: true
         });
 
+
+         <?php
+          $hflJan=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=1 GROUP BY MONTH(tanggal)");
+          $hflFeb=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=2 GROUP BY MONTH(tanggal)");
+          $hflMar=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=3 GROUP BY MONTH(tanggal)");
+          $hflApr=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=4 GROUP BY MONTH(tanggal)");
+          $hflMei=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=5 GROUP BY MONTH(tanggal)");
+          $hflJun=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=6 GROUP BY MONTH(tanggal)");
+          $hflJul=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=7 GROUP BY MONTH(tanggal)");
+          $hflAgu=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=8 GROUP BY MONTH(tanggal)");
+          $hflSep=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=9 GROUP BY MONTH(tanggal)");
+          $hflOkt=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=10 GROUP BY MONTH(tanggal)");
+          $hflNov=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=11 GROUP BY MONTH(tanggal)");
+          $hflDes=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun' AND MONTH(tanggal)=12 GROUP BY MONTH(tanggal)");
+
+        ?>
+        Morris.Bar({
+          element: 'grafik_hafalan1',
+          data: [
+            
+            {device: 'Juli', geekbench: <?php $hfl7=mysqli_fetch_array($hflJul); if($hfl7['jumlah_data']==""){echo "0";} else {echo $hfl7['jumlah_data'];} ?>},
+            {device: 'Agustus', geekbench: <?php $hfl8=mysqli_fetch_array($hflAgu); if($hfl8['jumlah_data']==""){echo "0";} else {echo $hfl8['jumlah_data'];} ?>},
+            {device: 'September', geekbench: <?php $hfl9=mysqli_fetch_array($hflSep); if($hfl9['jumlah_data']==""){echo "0";} else {echo $hfl9['jumlah_data'];} ?>},
+            {device: 'Oktober', geekbench: <?php $hfl10=mysqli_fetch_array($hflOkt); if($hfl10['jumlah_data']==""){echo "0";} else {echo $hfl10['jumlah_data'];} ?>},
+            {device: 'November', geekbench: <?php $hfl11=mysqli_fetch_array($hflNov); if($hfl11['jumlah_data']==""){echo "0";} else {echo $hfl11['jumlah_data'];} ?>},
+            {device: 'Desember', geekbench: <?php $hfl12=mysqli_fetch_array($hflDes); if($hfl12['jumlah_data']==""){echo "0";} else {echo $hfl12['jumlah_data'];} ?>},
+            {device: 'Januari', geekbench: <?php $hfl1=mysqli_fetch_array($hflJan); if($hfl1['jumlah_data']==""){echo "0";} else {echo $hfl1['jumlah_data'];} ?>},
+            {device: 'Februari', geekbench: <?php $hfl2=mysqli_fetch_array($hflFeb); if($hfl2['jumlah_data']==""){echo "0";} else {echo $hfl2['jumlah_data'];} ?>},
+            {device: 'Maret', geekbench: <?php $hfl3=mysqli_fetch_array($hflMar); if($hfl3['jumlah_data']==""){echo "0";} else {echo $hfl3['jumlah_data'];} ?>},
+            {device: 'April', geekbench: <?php $hfl4=mysqli_fetch_array($hflApr); if($hfl4['jumlah_data']==""){echo "0";} else {echo $$hfl4['jumlah_data'];} ?>},
+            {device: 'Mei', geekbench: <?php $hfl5=mysqli_fetch_array($hflMei); if($hfl5['jumlah_data']==""){echo "0";} else {echo $hfl5['jumlah_data'];} ?>},
+            {device: 'Juni', geekbench: <?php $hfl6=mysqli_fetch_array($hflJun); if($hfl6['jumlah_data']==""){echo "0";} else {echo $hfl6['jumlah_data'];} ?>}
+          ],
+          xkey: 'device',
+          ykeys: ['geekbench'],
+          labels: ['Angka Hafalan'],
+          barRatio: 0.4,
+          barColors: ['#0099FF', '#34495E', '#ACADAC', '#3498DB'],
+          xLabelAngle: 68,
+          hideHover: 'auto',
+          resize: true
+        });
+
         /* Grafik tengah */
         <?php
           $tahunAjaran2=mysqli_query($connect, "SELECT * FROM th_ajaran ORDER BY tahun_ajaran DESC limit 1, 1");
@@ -1354,6 +1424,49 @@ else{ ?>
           hideHover: 'auto',
           resize: true
         });
+
+        <?php
+          $hflJan=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=1 GROUP BY MONTH(tanggal)");
+          $hflFeb=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=2 GROUP BY MONTH(tanggal)");
+          $hflMar=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=3 GROUP BY MONTH(tanggal)");
+          $hflApr=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=4 GROUP BY MONTH(tanggal)");
+          $hflMei=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=5 GROUP BY MONTH(tanggal)");
+          $hflJun=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=6 GROUP BY MONTH(tanggal)");
+          $hflJul=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=7 GROUP BY MONTH(tanggal)");
+          $hflAgu=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=8 GROUP BY MONTH(tanggal)");
+          $hflSep=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=9 GROUP BY MONTH(tanggal)");
+          $hflOkt=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=10 GROUP BY MONTH(tanggal)");
+          $hflNov=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=11 GROUP BY MONTH(tanggal)");
+          $hflDes=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun2' AND MONTH(tanggal)=12 GROUP BY MONTH(tanggal)");
+
+        ?>
+        Morris.Bar({
+          element: 'grafik_hafalan2',
+          data: [
+            
+            {device: 'Juli', geekbench: <?php $hfl7=mysqli_fetch_array($hflJul); if($hfl7['jumlah_data']==""){echo "0";} else {echo $hfl7['jumlah_data'];} ?>},
+            {device: 'Agustus', geekbench: <?php $hfl8=mysqli_fetch_array($hflAgu); if($hfl8['jumlah_data']==""){echo "0";} else {echo $hfl8['jumlah_data'];} ?>},
+            {device: 'September', geekbench: <?php $hfl9=mysqli_fetch_array($hflSep); if($hfl9['jumlah_data']==""){echo "0";} else {echo $hfl9['jumlah_data'];} ?>},
+            {device: 'Oktober', geekbench: <?php $hfl10=mysqli_fetch_array($hflOkt); if($hfl10['jumlah_data']==""){echo "0";} else {echo $hfl10['jumlah_data'];} ?>},
+            {device: 'November', geekbench: <?php $hfl11=mysqli_fetch_array($hflNov); if($hfl11['jumlah_data']==""){echo "0";} else {echo $hfl11['jumlah_data'];} ?>},
+            {device: 'Desember', geekbench: <?php $hfl12=mysqli_fetch_array($hflDes); if($hfl12['jumlah_data']==""){echo "0";} else {echo $hfl12['jumlah_data'];} ?>},
+            {device: 'Januari', geekbench: <?php $hfl1=mysqli_fetch_array($hflJan); if($hfl1['jumlah_data']==""){echo "0";} else {echo $hfl1['jumlah_data'];} ?>},
+            {device: 'Februari', geekbench: <?php $hfl2=mysqli_fetch_array($hflFeb); if($hfl2['jumlah_data']==""){echo "0";} else {echo $hfl2['jumlah_data'];} ?>},
+            {device: 'Maret', geekbench: <?php $hfl3=mysqli_fetch_array($hflMar); if($hfl3['jumlah_data']==""){echo "0";} else {echo $hfl3['jumlah_data'];} ?>},
+            {device: 'April', geekbench: <?php $hfl4=mysqli_fetch_array($hflApr); if($hfl4['jumlah_data']==""){echo "0";} else {echo $$hfl4['jumlah_data'];} ?>},
+            {device: 'Mei', geekbench: <?php $hfl5=mysqli_fetch_array($hflMei); if($hfl5['jumlah_data']==""){echo "0";} else {echo $hfl5['jumlah_data'];} ?>},
+            {device: 'Juni', geekbench: <?php $hfl6=mysqli_fetch_array($hflJun); if($hfl6['jumlah_data']==""){echo "0";} else {echo $hfl6['jumlah_data'];} ?>}
+          ],
+          xkey: 'device',
+          ykeys: ['geekbench'],
+          labels: ['Angka Hafalan'],
+          barRatio: 0.4,
+          barColors: ['#0099FF', '#34495E', '#ACADAC', '#3498DB'],
+          xLabelAngle: 68,
+          hideHover: 'auto',
+          resize: true
+        });
+
         /* Penutup Grafik tengah */
 
         /* Grafik Kanan */
@@ -1444,6 +1557,49 @@ else{ ?>
           hideHover: 'auto',
           resize: true
         });
+
+        <?php
+          $hflJan=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=1 GROUP BY MONTH(tanggal)");
+          $hflFeb=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=2 GROUP BY MONTH(tanggal)");
+          $hflMar=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=3 GROUP BY MONTH(tanggal)");
+          $hflApr=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=4 GROUP BY MONTH(tanggal)");
+          $hflMei=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=5 GROUP BY MONTH(tanggal)");
+          $hflJun=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=6 GROUP BY MONTH(tanggal)");
+          $hflJul=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=7 GROUP BY MONTH(tanggal)");
+          $hflAgu=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=8 GROUP BY MONTH(tanggal)");
+          $hflSep=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=9 GROUP BY MONTH(tanggal)");
+          $hflOkt=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=10 GROUP BY MONTH(tanggal)");
+          $hflNov=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=11 GROUP BY MONTH(tanggal)");
+          $hflDes=mysqli_query($connect, "SELECT COUNT(id_hafalan) AS jumlah_data FROM detail_poin WHERE tahun_ajaran='$tahun3' AND MONTH(tanggal)=12 GROUP BY MONTH(tanggal)");
+
+        ?>
+        Morris.Bar({
+          element: 'grafik_hafalan3',
+          data: [
+            
+            {device: 'Juli', geekbench: <?php $hfl7=mysqli_fetch_array($hflJul); if($hfl7['jumlah_data']==""){echo "0";} else {echo $hfl7['jumlah_data'];} ?>},
+            {device: 'Agustus', geekbench: <?php $hfl8=mysqli_fetch_array($hflAgu); if($hfl8['jumlah_data']==""){echo "0";} else {echo $hfl8['jumlah_data'];} ?>},
+            {device: 'September', geekbench: <?php $hfl9=mysqli_fetch_array($hflSep); if($hfl9['jumlah_data']==""){echo "0";} else {echo $hfl9['jumlah_data'];} ?>},
+            {device: 'Oktober', geekbench: <?php $hfl10=mysqli_fetch_array($hflOkt); if($hfl10['jumlah_data']==""){echo "0";} else {echo $hfl10['jumlah_data'];} ?>},
+            {device: 'November', geekbench: <?php $hfl11=mysqli_fetch_array($hflNov); if($hfl11['jumlah_data']==""){echo "0";} else {echo $hfl11['jumlah_data'];} ?>},
+            {device: 'Desember', geekbench: <?php $hfl12=mysqli_fetch_array($hflDes); if($hfl12['jumlah_data']==""){echo "0";} else {echo $hfl12['jumlah_data'];} ?>},
+            {device: 'Januari', geekbench: <?php $hfl1=mysqli_fetch_array($hflJan); if($hfl1['jumlah_data']==""){echo "0";} else {echo $hfl1['jumlah_data'];} ?>},
+            {device: 'Februari', geekbench: <?php $hfl2=mysqli_fetch_array($hflFeb); if($hfl2['jumlah_data']==""){echo "0";} else {echo $hfl2['jumlah_data'];} ?>},
+            {device: 'Maret', geekbench: <?php $hfl3=mysqli_fetch_array($hflMar); if($hfl3['jumlah_data']==""){echo "0";} else {echo $hfl3['jumlah_data'];} ?>},
+            {device: 'April', geekbench: <?php $hfl4=mysqli_fetch_array($hflApr); if($hfl4['jumlah_data']==""){echo "0";} else {echo $$hfl4['jumlah_data'];} ?>},
+            {device: 'Mei', geekbench: <?php $hfl5=mysqli_fetch_array($hflMei); if($hfl5['jumlah_data']==""){echo "0";} else {echo $hfl5['jumlah_data'];} ?>},
+            {device: 'Juni', geekbench: <?php $hfl6=mysqli_fetch_array($hflJun); if($hfl6['jumlah_data']==""){echo "0";} else {echo $hfl6['jumlah_data'];} ?>}
+          ],
+          xkey: 'device',
+          ykeys: ['geekbench'],
+          labels: ['Angka Hafalan'],
+          barRatio: 0.4,
+          barColors: ['#0099FF', '#34495E', '#ACADAC', '#3498DB'],
+          xLabelAngle: 68,
+          hideHover: 'auto',
+          resize: true
+        });
+
         /* Penutup Grafik Kanan */
 
 

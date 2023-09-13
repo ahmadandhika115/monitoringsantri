@@ -17,7 +17,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
               <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Grafik Pelanggaran Siswa <small></small></h2>
+                    <h2>Grafik Pelanggaran Santri <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <?php
                         $tahunAjaran1=mysqli_query($connect, "SELECT * FROM th_ajaran ORDER BY tahun_ajaran DESC limit 2, 1");
@@ -39,7 +39,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
               <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Grafik Pelanggaran Siswa</h2>
+                    <h2>Grafik Pelanggaran Santri</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <?php
                         $tahunAjaran2=mysqli_query($connect, "SELECT * FROM th_ajaran ORDER BY tahun_ajaran DESC limit 1, 1");
@@ -61,7 +61,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
               <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Grafik Pelanggaran Siswa</h2>
+                    <h2>Grafik Pelanggaran Santri</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <?php
                         $tahunAjaran3=mysqli_query($connect, "SELECT * FROM th_ajaran ORDER BY tahun_ajaran DESC limit 0, 1");
@@ -87,7 +87,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
               <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Grafik Prestasi Siswa <small></small></h2>
+                    <h2>Grafik Prestasi Santri <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <h2><small><?php echo $tahun1; ?></small></h2>
                     </ul>
@@ -104,7 +104,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
               <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Grafik Prestasi Siswa</h2>
+                    <h2>Grafik Prestasi Santri</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <h2><small><?php echo $tahun2; ?></small></h2>
                     </ul>
@@ -121,7 +121,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
               <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Grafik Prestasi Siswa</h2>
+                    <h2>Grafik Prestasi Santri</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <h2><small><?php echo $tahun3; ?></small></h2>
                     </ul>
@@ -134,7 +134,60 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
               </div>
               <!-- /bar charts -->
 
+              
+            </div> <!-- Penutup row -->
 
+            <div class="row">
+              <!-- bar chart -->
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Grafik Hafalan Santri <small></small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <h2><small><?php echo $tahun1; ?></small></h2>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="grafik_hafalan1" style="width:100%; height:230px;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- /bar charts -->
+
+              <!-- bar chart -->
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Grafik Hafalan Santri</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <h2><small><?php echo $tahun2; ?></small></h2>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="grafik_hafalan2" style="width:100%; height:230px;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- /bar charts -->
+
+              <!-- bar chart -->
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Grafik Hafalan Santri</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <h2><small><?php echo $tahun3; ?></small></h2>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="grafik_hafalan3" style="width:100%; height:230px;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- /bar charts -->
 
             </div> <!-- Penutup row -->
 
@@ -163,6 +216,8 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                           </li>
                           <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Prestasi</a>
                           </li>
+                          <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Hafalan</a>
+                          </li>
                         </ul>
                         
                         <div id="myTabContent" class="tab-content">
@@ -174,7 +229,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                                   <th>No</th>
                                   <th>Tanggal</th>
                                   <th>NIS</th>
-                                  <th>Nama Siswa</th>
+                                  <th>Nama Santri</th>
                                   <th>Pelanggaran</th>
                                 </tr>
                               </thead>
@@ -212,7 +267,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                                   <th>No</th>
                                   <th>Tanggal</th>
                                   <th>NIS</th>
-                                  <th>Nama Siswa</th>
+                                  <th>Nama Santri</th>
                                   <th>Prestasi</th>
                                 </tr>
                               </thead>
@@ -240,6 +295,44 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                               </tbody>
                             </table>
                             <!-- end prestasi terbaru -->
+                          </div>
+
+                          <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="home-tab">
+                            <!-- start hafalan terbaru -->
+                            <table class="data table table-striped no-margin">
+                              <thead>
+                                <tr>
+                                  <th>No</th>
+                                  <th>Tanggal</th>
+                                  <th>NIS</th>
+                                  <th>Nama Santri</th>
+                                  <th>Hafalan</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                 <?php 
+                                    $tahun = mysqli_query($connect, "SELECT * FROM th_ajaran");
+                                    $th = mysqli_fetch_array($tahun);
+
+                                    $detail_poin = mysqli_query($connect,"SELECT * FROM detail_poin JOIN siswa ON siswa.nis=detail_poin.nis JOIN hafalan ON detail_poin.id_hafalan=hafalan.id_hafalan ORDER BY detail_poin.tanggal DESC LIMIT 10");
+                                    $no=1;
+                                    while($dp=mysqli_fetch_array($detail_poin)){
+                
+                                  ?>
+                                <tr>
+                                  <td><?php echo $no; ?></td>
+                                  <td><?php echo $dp['tanggal']; ?></td>
+                                  <td><?php echo $dp['nis']; ?></td>
+                                  <td><?php echo $dp['nama_siswa']; ?></td>
+                                  <td><?php echo $dp['nama_hafalan']; ?></td>
+                                </tr>
+                                <?php 
+                                $no++;
+                                } ?>
+                                
+                              </tbody>
+                            </table>
+                            <!-- end hafalan terbaru -->
                           </div>
                           
                         </div>

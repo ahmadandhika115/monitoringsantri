@@ -16,9 +16,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
 
               <div class="title_right">
                 <div class="col-md-1 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <font color="red"><h4><a href="#">Help</a></h4></font>
-                  </div>
+                 
                 </div>
               </div>
             </div>
@@ -84,9 +82,9 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
                                           <td class=" last">
                                             <div class="btn-group">
                                               <a href="main.php?module=edit_kat_pelanggaran&id_kat_pelanggaran=<?php echo $kp['id_kat_pelanggaran']; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i> Edit </button></a>
-                                              <!--
-                                              <a href="module/kat_pelanggaran/aksi_hapus.php?id_kat_pelanggaran=<?php //echo $kp['id_kat_pelanggaran'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button></a>
-                                            -->
+                                              
+                                              <a href="module/kat_pelanggaran/aksi_hapus.php?id_kat_pelanggaran=<?php echo $kp['id_kat_pelanggaran'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-left: 0.1cm;"><i class='fa fa-trash'></i> Hapus </button></a>
+                                            
                                             </div>
                                           </td>
                                         </tr>
@@ -101,9 +99,9 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
                                           <td class=" last">
                                             <div class="btn-group">
                                               <a href="main.php?module=edit_kat_pelanggaran&id_kat_pelanggaran=<?php echo $kp['id_kat_pelanggaran']; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i> Edit </button></a>
-                                              <!--
-                                              <a href="module/kat_pelanggaran/aksi_hapus.php?id_kat_pelanggaran=<?php //echo $kp['id_kat_pelanggaran'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button></a>
-                                            -->
+                                              
+                                              <a href="module/kat_pelanggaran/aksi_hapus.php?id_kat_pelanggaran=<?php echo $kp['id_kat_pelanggaran'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-left: 0.1cm;"><i class='fa fa-trash'></i> Hapus</button></a>
+                                            
                                             </div>
                                           </td>
                                         </tr>
@@ -192,6 +190,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
                                         <td class=" last">
                                           <div class="btn-group">
                                             <a href="main.php?module=edit_sub_kategori&id_sub_kategori=<?php echo $subKat['id_sub_kategori']; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i> Edit</button></a>
+                                            <a href="module/sub_kat_pelanggaran/aksi_hapus.php?id_sub_kategori=<?php echo $subKat['id_sub_kategori'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-left: 0.1cm;"><i class='fa fa-trash'></i> Hapus</button></a>
                                           </div>
                                         </td>
                                       </tr>
@@ -207,6 +206,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
                                         <td class=" last">
                                           <div class="btn-group">
                                             <a href="main.php?module=edit_sub_kategori&id_sub_kategori=<?php echo $subKat['id_sub_kategori']; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i> Edit</button></a>
+                                            <a href="module/sub_kat_pelanggaran/aksi_hapus.php?id_sub_kategori=<?php echo $subKat['id_sub_kategori'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-left: 0.1cm;"><i class='fa fa-trash'></i> Hapus</button></a>
                                           </div>
                                         </td>
                                       </tr>
@@ -240,20 +240,13 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
             </div>
             <?php } ?>
 
-
-            
-
-                
-              
-
-
                
               <!-- Tabel Jenis Pelanggaran -->
               <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Jenis Pelanggaran <small>Data Master</small></h2>
+                    <h2>Jenis Pelanggaran</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -294,7 +287,8 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
                           ?>
                           <td class=" last">
                             <div class="btn-group">
-                              <a href="main.php?module=edit_pelanggaran&id_pelanggaran=<?php echo $plg['id_pelanggaran']; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i> Edit</button></a>
+                              <a href="main.php?module=edit_pelanggaran&id_pelanggaran=<?php echo $plg['id_pelanggaran']; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i> </button></a>
+                              <a href="module/pelanggaran/aksi_hapus.php?id_pelanggaran=<?php echo $plg['id_pelanggaran'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-left: 0.1cm;"><i class='fa fa-trash'></i> </button></a>
                             </div>
                           </td>
                         <?php } ?>
@@ -321,8 +315,6 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==5)
               </div>
               </div>            
               <!-- Penutup Tabel Jenis Pelanggaran -->
-
-
             </div>
           </div>
         </div>

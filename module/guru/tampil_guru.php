@@ -36,9 +36,6 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>     <!-- Cek user, h
                         <li>
                           <a href="main.php?module=tambah_guru"><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i> Tambah Data Guru</button></a>
                         </li>
-                        <li>
-                          <a href="main.php?module=tambah_guru"><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-upload"></i> Upload File Guru</button></a>
-                        </li>
                         <?php } ?>
                       </ul>
 
@@ -87,7 +84,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>     <!-- Cek user, h
                             <td class=" last">
                               <div class="btn-group">
                                 <a href="main.php?module=edit_guru&nip=<?php echo $gur['nip']; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i> Edit</a>
-                                <!--<a href="<?php //echo $base_url; ?>module/guru/aksi_hapus.php?nip=<?php //echo $gur['nip'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>-->
+                               <a href="<?php echo $base_url; ?>module/guru/aksi_hapus.php?nip=<?php echo $gur['nip'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-left: 0.1cm;"><i class='fa fa-trash'></i> Hapus</a>
                               </div>
                             </td>
                             <?php } ?>

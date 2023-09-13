@@ -11,7 +11,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3)
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Data Siswa<small></small></h3>
+                <h3>Data Santri<small></small></h3>
               </div>
 
               <div class="title_right">
@@ -29,17 +29,14 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3)
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Siswa</h2>
+                    <h2>Data Santri</h2>
 
                       <ul class="nav navbar-right panel_toolbox">
                         <?php
                         if($_SESSION['akses']==1){
                         ?>
                         <li>
-                          <abbr title="Single input"><a href="main.php?module=tambah_siswa"><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i> Tambah Data Siswa</button></a></abbr>
-                        </li>
-                        <li>
-                          <abbr title="Upload Data Siswa Dalam .csv"><a href="main.php?module=tambah_guru"><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-upload"></i> Upload File Siswa</button></a></abbr>
+                          <abbr title="Single input"><a href="main.php?module=tambah_siswa"><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i> Tambah Data Santri</button></a></abbr>
                         </li>
                         <?php } ?>
                       </ul>
@@ -59,7 +56,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3)
                             
                             <th class="column-title">No </th>
                             <th class="column-title">NIS </th>
-                            <th class="column-title">Nama Siswa </th>
+                            <th class="column-title">Nama Santri </th>
                             <th class="column-title">Kelas </th>
                             <th class="column-title">Angkatan </th>
                             <th class="column-title no-link last"><span class="nobr">Aksi</span>
@@ -89,11 +86,11 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3)
                                 </button>
                                 </a>
                                 <?php } ?>
-                                <!--
-                                <a href="<?php //echo $base_url; ?>module/siswa/aksi_hapus.php?nis=<?php //echo $sw['nis'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
-                              -->
+                                
+                                <a href="<?php echo $base_url; ?>module/siswa/aksi_hapus.php?nis=<?php echo $sw['nis'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-right: 0.1cm;" ><i class='fa fa-trash'></i></a>
+                              
                                 <a href="main.php?module=detail_siswa&nis=<?php echo $sw['nis'];?>&sb=tampil_siswa" >
-                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Detail Siswa"><i class='fa fa-eye'></i>
+                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Detail Santri"><i class='fa fa-eye'></i>
                                 </button>
                                 </a>
                               </div>

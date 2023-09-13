@@ -32,6 +32,12 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                       <button type="reset" class="btn btn-primary" onclick="window.location='main.php?module=detail_pelanggaran_siswa&id_kelas=<?php echo $idKelas; ?>'"><i class="glyphicon glyphicon-arrow-left"></i> Kembali</button>
                     <?php 
                     }
+                    elseif ($sumber=='laporan_hafalan') {
+                      $idKelas=$_GET['id_kelas'];
+                    ?>
+                      <button type="reset" class="btn btn-primary" onclick="window.location='main.php?module=detail_pelanggaran_siswa&id_kelas=<?php echo $idKelas; ?>'"><i class="glyphicon glyphicon-arrow-left"></i> Kembali</button>
+                    <?php 
+                    }
                     elseif ($sumber=='detail_kelas') {
                       $idKelas=$_GET['id_kelas'];
                     ?>
@@ -48,6 +54,11 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                       <button type="reset" class="btn btn-primary" onclick="window.location='main.php?module=input_prestasi_siswa'"><i class="glyphicon glyphicon-arrow-left"></i> Kembali</button>
                     <?php
                     }
+                    elseif ($sumber=='input_hafalan') {
+                      ?>
+                        <button type="reset" class="btn btn-primary" onclick="window.location='main.php?module=input_hafalan_siswa'"><i class="glyphicon glyphicon-arrow-left"></i> Kembali</button>
+                      <?php
+                      }
                     elseif ($sumber=='home') {
                     ?>
                       <button type="reset" class="btn btn-primary" onclick="window.location='main.php?module=home_admin'"><i class="glyphicon glyphicon-arrow-left"></i> Kembali</button>
@@ -80,14 +91,8 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                 <div class="x_panel">
 
                   <div class="x_title">
-                    <h2>Profil Siswa </h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li>
-                        <div class="row no-print">
-                          <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
-                        </div>
-                      </li>
-                    </ul>
+                    <h2>Profil Santri </h2>
+                    
                       
                     <div class="clearfix"></div>
                   </div>
@@ -115,6 +120,11 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                                    $hitung_pres=mysqli_fetch_array($query_prestasi);
                                    $poin_pres=$hitung_pres['jml_prestasi'];
                                    $persen_pres=$poin_pres/125*100;
+
+                                   $query_hafalan=mysqli_query($connect, "SELECT detail_poin.id_detail_poin, detail_poin.tanggal, hafalan.nama_hafalan, detail_poin.ket, SUM(hafalan.poin) AS jml_hafalan FROM detail_poin JOIN siswa ON detail_poin.nis=siswa.nis JOIN hafalan ON detail_poin.id_hafalan=hafalan.id_hafalan WHERE detail_poin.nis='$nis' ");
+                                   $hitung_hafalan=mysqli_fetch_array($query_hafalan);
+                                   $poin_hafalan=$hitung_hafalan['jml_hafalan'];
+                                   $persen_hafalan=$poin_hafalan/125*100;
                                  ?>
 
                       <!-- start skills -->
@@ -127,6 +137,12 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                           </div>
                         </li>
                         <li>
+                          <p>Hafalan<?php echo " [ ".$poin_hafalan." ] "; ?></p>
+                          <div class="progress progress_sm">
+                            <div class="progress-bar bg-blue" role="progressbar" data-transitiongoal="<?php echo $persen_hafalan; ?>"></div>
+                          </div>
+                        </li>
+                        <li>
                           <p>Pelanggaran<?php echo " [ ".$poin_plg." ] "; ?></p>
                           <div class="progress progress_sm">
                             <div class="progress-bar bg-red" role="progressbar" data-transitiongoal="<?php echo $persen_plg; ?>"></div>
@@ -135,14 +151,14 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                       </ul>
                       <?php if ($poin_plg>=36) {  
                       ?>
-                      <button type="button" class="btn btn-danger"><i class='fa fa-exclamation-circle'></i> Cetak SP</button>
+                      
                       <?php } ?>
 
                       <!-- end of skills -->
                     </div> <!-- Tutup col md-3 -->
 
                     <div class="col-md-9 col-sm-9 col-xs-9">
-                      <h3>Detail Data Siswa</h3>
+                      <h3>Detail Data Santri</h3>
                       <table class="table">
                                     <?php
                                       $nis=$_GET['nis'];
@@ -165,7 +181,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                             <td><?php echo $nis; ?></td>
                           </tr>
                           <tr>
-                            <td>Nama Siswa</td>
+                            <td>Nama Santri</td>
                             <td>:</td>
                             <td><?php echo $namaSiswa; ?></td>
                           </tr>
@@ -203,7 +219,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                 <div class="x_panel">
 
                   <div class="x_title">
-                    <h2>Detail Prestasi dan Pelanggaran</h2>
+                    <h2>Detail Prestasi, Hafalan dan Pelanggaran</h2>
                     <div class="clearfix"></div>
                   </div>
 
@@ -214,6 +230,8 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                           <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Pelanggaran</a>
                           </li>
                           <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Prestasi</a>
+                          </li>
+                          <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Hafalan</a>
                           </li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
@@ -306,7 +324,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                                   <td><?php echo $pres['tanggal']; ?></td>
                                   <td><?php echo $pres['nama_prestasi']; ?></td>
                                   <td><?php echo $pres['ket']; ?></td>
-                                          <?php if ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
+                                  <?php if ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                                   <td>
                                     <div class="btn-group">
                                       <a href="main.php?module=edit_prestasi_siswa&id_detail_poin=<?php echo $idDetailPoin; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i></button></a>
@@ -327,6 +345,62 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3 
                                   <?php } ?>    
                             <!-- end tabel prestasi -->
                           </div> <!-- tutup tab content 2 -->
+
+                          <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                            <!-- start tabel hafalan -->
+                                  <?php
+                                    $hafalan=mysqli_query($connect, "SELECT * FROM detail_poin JOIN siswa ON detail_poin.nis=siswa.nis JOIN hafalan ON detail_poin.id_hafalan=hafalan.id_hafalan WHERE detail_poin.nis='$nis' ORDER BY tanggal DESC");
+                                    $ketemu = mysqli_num_rows($hafalan);
+                                    if($ketemu==0){
+                                      echo "<h4 align=center>Belum ada hafalan</h4>";
+                                    }
+                                    else{
+                                  ?>
+                            <table id="datatable-fixed-header" class="table table-striped table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>No</th>
+                                  <th>Tanggal</th>
+                                  <th>Hafalan</th>
+                                  <th>Keterangan</th>
+                                  <?php if ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
+                                  <th>Aksi</th>
+                                  <?php } ?>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                      <?php
+                                      $no=1;
+                                      while($pres=mysqli_fetch_array($hafalan)){
+                                      $idDetailPoin=$pres['id_detail_poin'];
+                                       ?>
+                                <tr>
+                                  <td><?php echo $no; ?></td>
+                                  <td><?php echo $pres['tanggal']; ?></td>
+                                  <td><?php echo $pres['nama_hafalan']; ?></td>
+                                  <td><?php echo $pres['ket']; ?></td>
+                                          <?php if ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
+                                  <td>
+                                    <div class="btn-group">
+                                      <a href="main.php?module=edit_hafalan_siswa&id_detail_poin=<?php echo $idDetailPoin; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i></button></a>
+                                      <a href="module/hafalan_siswa/aksi_hapus.php?id_detail_poin=<?php echo $idDetailPoin;?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button></a>              
+                                    </div>
+                                  </td>
+                                          <?php } ?>
+
+                                </tr>
+
+                                      <?php
+                                        $no++;
+                                        }
+                                      ?>
+                                      
+                              </tbody>
+                            </table>
+                                  <?php } ?>    
+                            <!-- end tabel hafalan -->
+                          </div> <!-- tutup tab content 3 -->
 
                         </div> <!-- tutup tab -->
 

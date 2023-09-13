@@ -14,16 +14,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>     <!-- Cek user, h
                 <h3>Data Kelas<small></small></h3>
               </div>
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+             
             </div>
 
             <div class="clearfix"></div>
@@ -73,11 +64,17 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>     <!-- Cek user, h
                             <td class=" last">
                               <div class="btn-group">
                                 <a href="main.php?module=edit_kelas&id_kelas=<?php echo $kls['id_kelas']; ?>"><button class="btn btn-warning btn-sm" <?php if ($_SESSION['akses']==2){ echo 'disabled'; }?>><i class='fa fa-pencil'></i> Edit</button></a>
-                                <!--
-                                <a href="<?php //echo $base_url; ?>module/kelas/aksi_hapus.php?id_kelas=<?php //echo $kls['id_kelas'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
-                              -->
+                                
+                                <a href="<?php if ($_SESSION['akses'] != 2) { echo $base_url . 'module/kelas/aksi_hapus.php?id_kelas=' . $kls['id_kelas']; } ?>"
+   onClick="<?php if ($_SESSION['akses'] == 2) { echo "return false;"; } else { echo "return confirm('Anda yakin ingin menghapus data ini?');"; } ?>"
+   class="btn btn-danger btn-sm"
+   <?php if ($_SESSION['akses'] == 2) { echo 'disabled'; } ?>
+   style="margin-right: 0.1cm;">
+    <i class='fa fa-trash'></i> Hapus
+</a>
+                                
                                 <a href="main.php?module=detail_kelas&id_kelas=<?php echo $kls['id_kelas'];?>" >
-                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Daftar Siswa"><i class='fa fa-eye'> Lihat</i>
+                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Daftar Santri"><i class='fa fa-eye'> Lihat</i>
                                 </button>
                                 </a>
                               </div>
@@ -102,11 +99,17 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>     <!-- Cek user, h
                             <td class=" last">
                               <div class="btn-group">
                                 <a href="main.php?module=edit_kelas&id_kelas=<?php echo $kls['id_kelas']; ?>"><button class="btn btn-warning btn-sm" <?php if ($_SESSION['akses']==2){ echo 'disabled'; }?>><i class='fa fa-pencil'></i> Edit</button></a>
-                                <!--
-                                <a href="<?php //echo $base_url; ?>module/kelas/aksi_hapus.php?id_kelas=<?php //echo $kls['id_kelas'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
-                              -->
+                                
+                                <a href="<?php if ($_SESSION['akses'] != 2) { echo $base_url . 'module/kelas/aksi_hapus.php?id_kelas=' . $kls['id_kelas']; } ?>"
+   onClick="<?php if ($_SESSION['akses'] == 2) { echo "return false;"; } else { echo "return confirm('Anda yakin ingin menghapus data ini?');"; } ?>"
+   class="btn btn-danger btn-sm"
+   <?php if ($_SESSION['akses'] == 2) { echo 'disabled'; } ?>
+   style="margin-right: 0.1cm;">
+    <i class='fa fa-trash'></i> Hapus
+</a>
+                              
                                 <a href="main.php?module=detail_kelas&id_kelas=<?php echo $kls['id_kelas'];?>" >
-                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Daftar Siswa"><i class='fa fa-eye'> Lihat</i>
+                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Daftar Santri"><i class='fa fa-eye'> Lihat</i>
                                 </button>
                                 </a>
                               </div>

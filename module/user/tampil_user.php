@@ -28,7 +28,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Data User</h2>
-                    <ul class="nav navbar-right panel_toolbox">
+                   <!-- <ul class="nav navbar-right panel_toolbox">
                       <li><button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Help</button></li>
 
                       <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
@@ -54,12 +54,15 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                               <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
                               
                             </div>
+                   
 
                           </div>
                         </div>
                       </div>
 
                     </ul>
+
+                    -->
                     <div class="clearfix"></div>
                   </div>
 
@@ -94,7 +97,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                               <?php
 
                               if ($nis!=null) {
-                                $nama_siswa=mysqli_query($connect, "SELECT nama_siswa FROM siswa WHERE nis=$nis");
+                                $nama_siswa=mysqli_query($connect, "SELECT nama_siswa FROM siswa WHERE nis= '$nis' ");
                                 $nm=mysqli_fetch_array($nama_siswa);
                                 $nama= $nm['nama_siswa'];
                               }
@@ -116,21 +119,21 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                               echo " - Administrator";
                             }
                             elseif($usr['hak_akses']==2){
-                              echo " - Guru Kesiswaan";
+                              echo " - Kasi";
                             }
                             elseif($usr['hak_akses']==3){
                               echo " - Wali Kelas";
                             }
                             elseif($usr['hak_akses']==4){
-                              echo " - Kepala Sekolah";
+                              echo " - Direktur";
                             }
                             else{
-                              echo " - Orang Tua/Siswa";
+                              echo " - Orang Tua/Santri";
                             }?></td>
                             <td class="last">
                               <div class="btn-group">
                                 <a href="main.php?module=edit_user&id_login=<?php echo $usr['id_login']; ?>" class="btn btn-warning btn-sm"><i class='fa fa-pencil'></i></button></a>
-                                <a href="module/user/aksi_hapus.php?id_login=<?php echo $usr['id_login'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button></a>
+                                <a href="module/user/aksi_hapus.php?id_login=<?php echo $usr['id_login'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-left: 0.1cm;"><i class='fa fa-trash'></i></button></a>
                               </div>
                             </td>
                           </tr>
