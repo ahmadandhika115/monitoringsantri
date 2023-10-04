@@ -82,7 +82,7 @@ elseif ($_SESSION['akses']==1){ ?>
                               $kelas=mysqli_query($connect,"SELECT * FROM kelas JOIN jurusan ON kelas.id_jurusan=jurusan.id_jurusan ORDER BY kelas.tingkat_kelas");
                               while ($kls=mysqli_fetch_array($kelas)) {
                              ?>
-                            <option <?php if( $kls['id_kelas']=='$idKelas'){echo "selected"; } ?> value="<?php echo $kls['id_kelas']; ?>"><?php echo $kls['tingkat_kelas'].' '.$kls['nama_jurusan'].' '.$kls['sub_kelas']; ?></option>
+                            <option <?php if( $kls['id_kelas']=="$idKelas"){echo "selected"; } ?> value="<?php echo $kls['id_kelas']; ?>"><?php echo $kls['tingkat_kelas'].' '.$kls['nama_jurusan'].' '.$kls['sub_kelas']; ?></option>
                             <?php } ?>
                           </select>
                         </div>

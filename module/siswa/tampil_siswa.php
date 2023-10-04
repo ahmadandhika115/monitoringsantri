@@ -85,10 +85,9 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2 or $_SESSION['akses']==3)
                                 <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class='fa fa-pencil'></i>
                                 </button>
                                 </a>
-                                <?php } ?>
-                                
                                 <a href="<?php echo $base_url; ?>module/siswa/aksi_hapus.php?nis=<?php echo $sw['nis'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm" style="margin-right: 0.1cm;" ><i class='fa fa-trash'></i></a>
-                              
+                                <?php } ?>
+                 
                                 <a href="main.php?module=detail_siswa&nis=<?php echo $sw['nis'];?>&sb=tampil_siswa" >
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Detail Santri"><i class='fa fa-eye'></i>
                                 </button>

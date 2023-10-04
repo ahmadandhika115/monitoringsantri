@@ -10,6 +10,7 @@ if (empty($_SESSION['namauser']) AND empty($_SESSION['passuser'])) {
 	
 	$idLogin = $_POST['idLogin'];
 	$username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
     $pass = md5($password);
     $nis = $_POST['nis'];
@@ -33,7 +34,7 @@ if (empty($_SESSION['namauser']) AND empty($_SESSION['passuser'])) {
     $nip=substr($guru, 0,18);
     $hakAkses = $_POST['hakAkses'];
 
-	$queryEdit = mysqli_query($connect,"UPDATE user SET username='$username', password='$pass', nis='$nis', nip='$nip', id_ortu='$idOrtu', hak_akses='$hakAkses' WHERE id_login='$idLogin'" );
+	$queryEdit = mysqli_query($connect,"UPDATE user SET username='$username', password='$pass', email='$email', nis='$nis', nip='$nip', id_ortu='$idOrtu', hak_akses='$hakAkses' WHERE id_login='$idLogin'" );
 
 	if ($queryEdit) {
 		echo "<script> alert ('Data User Berhasil Diubah'); window.location = '$base_url'+'main.php?module=user';</script>";

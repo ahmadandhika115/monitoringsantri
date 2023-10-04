@@ -77,6 +77,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                             <th class="column-title">No </th>
                             <th class="column-title">Nama</th>
                             <th class="column-title">Username  </th>
+                            <th class="column-title">Email  </th>
                             <th class="column-title">Hak Akses </th>
                             <th class="column-title no-link last"><span class="nobr">Aksi</span>
                             </th>
@@ -114,6 +115,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                               ?>
                             <td class=" "><?php echo $nama;?></td>
                             <td class=" "><?php echo $usr['username'];?></td>
+                            <td class=" "><?php echo $usr['email'];?></td>
                             <td class=" "><?php echo $usr['hak_akses'];
                             if($usr['hak_akses']==1){
                               echo " - Administrator";

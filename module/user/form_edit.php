@@ -39,6 +39,7 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                       $hasilQuery=mysqli_fetch_array($queryEdit);
                       $username=$hasilQuery['username'];
                       $pass=$hasilQuery['password'];
+                      $email=$hasilQuery['email'];
                       $nis=$hasilQuery['nis'];
                       $nip=$hasilQuery['nip'];
                       $idOrtu=$hasilQuery['id_ortu'];
@@ -55,6 +56,13 @@ elseif ($_SESSION['akses']==1 or $_SESSION['akses']==2){ ?>
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> Password</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="password" id="password" name="password" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $pass; ?>">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> Email</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="hidden" name="idLogin" id="idLogin" value="<?php echo $idLogin; ?>">
+                          <input type="text" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $email; ?>">
                         </div>
                       </div>
                       <div class="form-group">

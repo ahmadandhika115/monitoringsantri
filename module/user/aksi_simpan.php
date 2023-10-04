@@ -3,6 +3,7 @@
     include "../../lib/koneksi.php";
 
     $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
     $pass = md5($password);
     
@@ -29,7 +30,7 @@
     $hakAkses = $_POST['hakAkses'];
 
 
-    $querySimpan = mysqli_query($connect,"INSERT INTO user (username, password, nip, nis, id_ortu, hak_akses) VALUES ('$username', '$pass', '$nip', '$nis', '$idOrtu', '$hakAkses')");
+    $querySimpan = mysqli_query($connect,"INSERT INTO user (username, password, email, nip, nis, id_ortu, hak_akses) VALUES ('$username', '$pass', '$email', '$nip', '$nis', '$idOrtu', '$hakAkses')");
 
     if ($querySimpan) {
         echo "<script> alert('Data User Berhasil Masuk'); window.location = '$base_url'+'main.php?module=user';</script>";

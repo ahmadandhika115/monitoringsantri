@@ -53,7 +53,7 @@ elseif ($_SESSION['akses']==1){ ?>
                             <option <?php if( $tingkatKelas=='X'){echo "selected"; } ?> value="X">X (Sepuluh)</option>
                             <option <?php if( $tingkatKelas=='XI'){echo "selected"; } ?> value="XI">XI (Sebelas)</option>
                             <option <?php if( $tingkatKelas=='XII'){echo "selected"; } ?> value="XII">XII (Dua Belas)</option>
-                            <option <?php if( $tingkatKelas=='XIII'){echo "selected"; } ?> value="XIII">XIII (Tiga Belas)</option>
+                           
                           </select>
                         </div>
                       </div>
@@ -66,7 +66,7 @@ elseif ($_SESSION['akses']==1){ ?>
                               $jurusan=mysqli_query($connect,"SELECT * FROM jurusan");
                               while ($jur=mysqli_fetch_array($jurusan)) {
                              ?>
-                            <option <?php if( $jur['id_jurusan']=='$idJurusan'){echo "selected"; } ?> value="<?php echo $jur['id_jurusan']; ?>"><?php echo $jur['nama_jurusan']; ?></option>
+                            <option <?php if( $jur['id_jurusan']=="$idJurusan"){echo "selected"; } ?> value="<?php echo $jur['id_jurusan']; ?>"><?php echo $jur['nama_jurusan']; ?></option>
                             <?php } ?>
                           </select>
                         </div>
@@ -78,11 +78,12 @@ elseif ($_SESSION['akses']==1){ ?>
                             <option disabled="disabled">-- Pilih --</option>
                             <option <?php if( $subKelas=='A'){echo "selected"; } ?> value="A">A</option>
                             <option <?php if( $subKelas=='B'){echo "selected"; } ?> value="B">B</option>
+                            <option <?php if( $subKelas=='C'){echo "selected"; } ?> value="C">C</option>
                           </select>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> Jumlah Siswa</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> Jumlah Santri</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="jmlSiswa" name="jmlSiswa" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $hasilQuery['jml_siswa'] ?>">
                         </div>

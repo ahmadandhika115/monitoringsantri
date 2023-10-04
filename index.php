@@ -20,9 +20,10 @@
     <!-- Bootstrap -->
     <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href=".assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="https://colorlib.com/polygon/gentelella/css/animate.min.css" rel="stylesheet">
+
 
     <!-- Custom Theme Style -->
     <link href="assets/build/css/custom.min.css" rel="stylesheet">
@@ -47,8 +48,13 @@
               <div align="right">
               
                 <button class="btn btn-default submit" href="login.php" >Log in</buttonh>
-                <!--<a class="reset_pass" href="#">Lupa password?</a>-->
+               
               </div>
+              <p class="mb-1">
+                <a href="lupa_pass.php">Lupa Password?</a>
+              </p>
+
+          
 
               <div class="clearfix"></div>
 
@@ -64,5 +70,7 @@
         </div>
       </div>
     </div>
+
+
   </body>
 </html>
